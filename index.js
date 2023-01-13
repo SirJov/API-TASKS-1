@@ -1,7 +1,7 @@
 const express = require("express");
 const Cors = require("cors");
 require("dotenv").config();
-const TaskController = require("./Controllers/controller");
+const TaskController = require("./src/Controllers/controller");
 const app = express();
 
 app.use(express.json());
