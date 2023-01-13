@@ -1,10 +1,18 @@
 const validateBody = (req, res, next) => {
   const { body } = req;
   const task = body.tarefa;
-  const Texto = task.trim();
-  if (!Texto) {
+  const a = task.replace(/\s/g, "");
+
+  console.log(a + " " + typeof task + " AAAAAAAAAAAAAA");
+
+  if (task === undefined) {
     return res.status(404).json({ mensage: "campo tarefa obrigatorio!!" });
   }
+
+  if (a == "") {
+    return res.status(404).json({ mensage: "campo tarefa obrigatorio!!" });
+  }
+
   next();
 };
 

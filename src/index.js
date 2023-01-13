@@ -6,10 +6,14 @@ const app = express();
 
 app.use(express.json());
 app.use(Cors());
-app.use("/api/tasks/", TaskController);
+app.use("/tasks", TaskController);
 
 module.exports = app;
 
 const port = process.env.porta || 3030;
 
-app.listen(port, () => console.log("servidor rodando na porta " + port));
+app.listen(port, () =>
+  console.log(
+    "SERVER OPEN PORT " + port + " Connected DATA-BASE to PlanetScale!"
+  )
+);
