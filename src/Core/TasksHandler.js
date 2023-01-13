@@ -7,12 +7,12 @@ class TasksHandler {
     try {
       const { tarefa } = req.body;
       const params_1 = [tarefa];
-      const userQuery = `SELECT * FROM tasks WHERE VALUE_TASK =?`;
+      const userQuery = `SELECT * FROM tasks WHERE value_task =?`;
       const user = await taskModel(userQuery, params_1);
       if (user.length > 0) throw new Error("Esta tarefa já existe");
 
       const params_2 = [tarefa, "PENDENTE"];
-      const query = "INSERT INTO tasks (VALUE_TASK,STATE_TASK) VALUES (?,?)";
+      const query = "INSERT INTO tasks (value_task,state_task) VALUES (?,?)";
       await taskModel(query, params_2);
       return { mensagem: "Tarefa criada com sucesso!!!" };
     } catch (error) {
@@ -36,12 +36,12 @@ class TasksHandler {
     try {
       const { id } = req.params;
       const params_1 = [id];
-      const userQuery = `SELECT * FROM tasks WHERE ID_TASKS =?`;
+      const userQuery = `SELECT * FROM tasks WHERE id_tasks =?`;
       const user = await taskModel(userQuery, params_1);
       if (user.length == 0) throw new Error("Esta tarefa nao existe");
 
       const params_2 = [id];
-      const query = "DELETE FROM tasks WHERE ID_TASKS =?";
+      const query = "DELETE FROM tasks WHERE id_tasks =?";
       await taskModel(query, params_2);
       return { mensagem: "Tarefa deletada com sucesso!!!" };
     } catch (error) {
@@ -53,7 +53,7 @@ class TasksHandler {
     try {
       const { id } = req.params;
       const params_1 = [id];
-      const userQuery = `SELECT * FROM tasks WHERE ID_TASKS =?`;
+      const userQuery = `SELECT * FROM tasks WHERE id_tasks =?`;
       const user = await taskModel(userQuery, params_1);
 
       const [inf] = user;
@@ -74,7 +74,7 @@ class TasksHandler {
       if (user.length == 0) throw new Error("Esta tarefa nao existe");
 
       const params_2 = [estados, id];
-      const query = "UPDATE tasks SET STATE_TASK = ? WHERE ID_TASKS =?";
+      const query = "UPDATE tasks SET state_task = ? WHERE id_tasks =?";
       await taskModel(query, params_2);
       return { mensagem: "Estado atualizado com sucesso!!!" };
     } catch (error) {
@@ -86,7 +86,7 @@ class TasksHandler {
     try {
       const { id } = req.params;
       const params_1 = [id];
-      const userQuery = `SELECT * FROM tasks WHERE ID_TASKS =?`;
+      const userQuery = `SELECT * FROM tasks WHERE id_tasks =?`;
       const user = await taskModel(userQuery, params_1);
       if (user.length == 0)
         return { mensagem: "Esta tarefa nao existe", code: 500 };
@@ -104,7 +104,7 @@ class TasksHandler {
     try {
       const { tarefa } = req.body;
       const params_1 = [tarefa];
-      const userQuery = `SELECT * FROM tasks WHERE VALUE_TASK =?`;
+      const userQuery = `SELECT * FROM tasks WHERE value_task =?`;
       const user = await taskModel(userQuery, params_1);
       if (user.length == 0)
         return { mensagem: "Esta tarefa nao existe", code: 500 };
