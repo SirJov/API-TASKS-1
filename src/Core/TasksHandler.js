@@ -6,6 +6,7 @@ class TasksHandler {
   async gravar(req) {
     try {
       const { tarefa } = req.body;
+      console.log(tarefa + " AAAAAAAAAA");
       const params_1 = [tarefa];
       const userQuery = `SELECT * FROM tasks WHERE value_task =?`;
       const user = await taskModel(userQuery, params_1);
