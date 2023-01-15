@@ -53,23 +53,26 @@ class TasksHandler {
     try {
       const { id } = req.params;
       const params_1 = [id];
-      const userQuery = `SELECT * FROM tasks WHERE id_tasks =?`;
+      const userQuery = `SELECT state_task FROM tasks WHERE id_tasks =?`;
       const user = await taskModel(userQuery, params_1);
 
-      const [inf] = user;
-      const { estado } = inf;
+      //destruindo a json retornada da tarefa especifica e obtendo o status em 'string'
+      const [a] = user;
+      const { state_task } = a;
+      console.log(state_task);
 
-      function estadoCorreto(estado) {
-        if (estado === "PENDENTE") {
+      function estadoCorreto(a) {
+        if (a === "PENDENTE") {
           const infEdit = "CONCLUIDO";
           return infEdit;
         }
-        if (estado === "CONCLUIDO") {
+        if (a === "CONCLUIDO") {
           const infEdit = "PENDENTE";
           return infEdit;
         }
       }
-      const estados = estadoCorreto(estado);
+
+      const estados = estadoCorreto(state_task);
 
       if (user.length == 0) throw new Error("Esta tarefa nao existe");
 
