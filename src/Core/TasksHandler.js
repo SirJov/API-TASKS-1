@@ -52,6 +52,7 @@ class TasksHandler {
   async deletarBody(req) {
     try {
       const { value_task } = req.params;
+      console.log(value_task + " AAAAAAAAAAAAAA vvv");
       const userQuery = `SELECT * FROM tasks WHERE value_task =?`;
       const user = await taskModel(userQuery, value_task);
       if (user.length == 0) throw new Error("Esta tarefa nao existe");
