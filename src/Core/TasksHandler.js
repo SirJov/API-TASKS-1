@@ -6,7 +6,6 @@ class TasksHandler {
   async gravar(req) {
     try {
       const { value_task } = req.body;
-      console.log(value_task + " AAAAAAAAAA");
       const params_1 = [value_task];
       const userQuery = `SELECT * FROM tasks WHERE value_task =?`;
       const user = await taskModel(userQuery, params_1);
@@ -44,6 +43,21 @@ class TasksHandler {
       const params_2 = [id];
       const query = "DELETE FROM tasks WHERE id_tasks =?";
       await taskModel(query, params_2);
+      return { mensagem: "Tarefa deletada com sucesso!!!" };
+    } catch (error) {
+      return { message: error.message, code: 500 };
+    }
+  }
+
+  async deletarBody(req) {
+    try {
+      const { value_task } = req.body;
+      const userQuery = `SELECT * FROM tasks WHERE value_task =?`;
+      const user = await taskModel(userQuery, value_task);
+      if (user.length == 0) throw new Error("Esta tarefa nao existe");
+
+      const query = "DELETE FROM tasks WHERE value_task =?";
+      await taskModel(query, value_task);
       return { mensagem: "Tarefa deletada com sucesso!!!" };
     } catch (error) {
       return { message: error.message, code: 500 };
