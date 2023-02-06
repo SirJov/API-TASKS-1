@@ -1,7 +1,9 @@
 const validateBody = (req, res, next) => {
   const { body } = req;
   const task = body.value_task;
-  console.log(task + " AAAAAAAAA");
+  console.log("Valor e tipo do body");
+  console.log(task);
+  console.log(typeof task);
   const a = task.replace(/\s/g, "");
 
   console.log(a + " " + typeof task + " AAAAAAAAAAAAAA");
