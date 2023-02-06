@@ -14,7 +14,7 @@ class TasksHandler {
       const params_2 = [value_task, "PENDENTE"];
       const query = "INSERT INTO tasks (value_task,state_task) VALUES (?,?)";
       await taskModel(query, params_2);
-      return { mensagem: "Tarefa criada com sucesso!!!" };
+      return [{ mensagem: "Tarefa criada com sucesso!!!" }, value_task];
     } catch (error) {
       return { message: error.message, code: 500 };
     }
@@ -51,7 +51,7 @@ class TasksHandler {
 
   async deletarBody(req) {
     try {
-      const { value_task } = req.params;
+      const { value_task } = req.query.value_task;
       console.log(value_task + " AAAAAAAAAAAAAA vvv");
       const userQuery = `SELECT * FROM tasks WHERE value_task =?`;
       const user = await taskModel(userQuery, value_task);
