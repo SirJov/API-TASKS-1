@@ -33,7 +33,7 @@ router.delete("/deletar/:id", midlleware.validateId, async (req, res) => {
     return res.status(404).json(JSON.stringify(error));
   }
 });
-router.delete("/deletarBody", midlleware.validateBody, async (req, res) => {
+router.delete("/deletarBody", async (req, res) => {
   try {
     const task = await handler.deletarBody(req);
     if (task) return res.status(200).send(task);
