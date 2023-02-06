@@ -5,14 +5,14 @@ class TasksHandler {
 
   async gravar(req) {
     try {
-      const { tarefa } = req.body;
-      console.log(tarefa + " AAAAAAAAAA");
-      const params_1 = [tarefa];
+      const { value_task } = req.body;
+      console.log(value_task + " AAAAAAAAAA");
+      const params_1 = [value_task];
       const userQuery = `SELECT * FROM tasks WHERE value_task =?`;
       const user = await taskModel(userQuery, params_1);
       if (user.length > 0) throw new Error("Esta tarefa já existe");
 
-      const params_2 = [tarefa, "PENDENTE"];
+      const params_2 = [value_task, "PENDENTE"];
       const query = "INSERT INTO tasks (value_task,state_task) VALUES (?,?)";
       await taskModel(query, params_2);
       return { mensagem: "Tarefa criada com sucesso!!!" };
@@ -106,8 +106,8 @@ class TasksHandler {
 
   async buscarBody(req) {
     try {
-      const { tarefa } = req.body;
-      const params_1 = [tarefa];
+      const { value_task } = req.body;
+      const params_1 = [value_task];
       const userQuery = `SELECT * FROM tasks WHERE value_task =?`;
       const user = await taskModel(userQuery, params_1);
       if (user.length == 0)
