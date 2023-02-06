@@ -14,7 +14,7 @@ class TasksHandler {
       const params_2 = [value_task, "PENDENTE"];
       const query = "INSERT INTO tasks (value_task,state_task) VALUES (?,?)";
       await taskModel(query, params_2);
-      return [{ mensagem: "Tarefa criada com sucesso!!!" }, value_task];
+      return [{ mensagem: "Tarefa criada com sucesso!!!" }, user];
     } catch (error) {
       return { message: error.message, code: 500 };
     }
