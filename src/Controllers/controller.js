@@ -4,7 +4,7 @@ const TasksHandler = require("../Core/TasksHandler");
 const handler = new TasksHandler();
 const midlleware = require("../Middlewares/middlewares");
 
-router.post("/criar", async (req, res) => {
+router.post("/criar", midlleware.validateBody, async (req, res) => {
   try {
     const task = await handler.gravar(req);
     if (task) return res.status(200).send(task);
