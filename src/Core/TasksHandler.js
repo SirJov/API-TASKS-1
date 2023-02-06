@@ -11,10 +11,13 @@ class TasksHandler {
       const user = await taskModel(userQuery, params_1);
       if (user.length > 0) throw new Error("Esta tarefa já existe");
 
+      const userConfirm = await taskModel(userQuery, value_task);
+
       const params_2 = [value_task, "PENDENTE"];
       const query = "INSERT INTO tasks (value_task,state_task) VALUES (?,?)";
       await taskModel(query, params_2);
-      return [{ mensagem: "Tarefa criada com sucesso!!!" }, user];
+
+      return [{ mensagem: "Tarefa criada com sucesso!!!" }, userConfirm[0]];
     } catch (error) {
       return { message: error.message, code: 500 };
     }
