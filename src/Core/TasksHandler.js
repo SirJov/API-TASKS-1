@@ -62,7 +62,7 @@ class TasksHandler {
       const user = await taskModel(userQuery, id);
       if (user.length == 0) throw new Error("Esta tarefa nao existe");
 
-      const query = "DELETE FROM tasks WHERE value_task =?";
+      const query = "DELETE FROM tasks WHERE id_tasks =?";
       await taskModel(query, id);
       return { mensagem: "Tarefa deletada com sucesso!!!" };
     } catch (error) {
