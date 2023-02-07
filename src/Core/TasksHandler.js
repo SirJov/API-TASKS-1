@@ -55,7 +55,7 @@ class TasksHandler {
 
   async deletarBody(req) {
     try {
-      const id = req.query[id_tasks];
+      const id = req.query["id_tasks"];
       console.log(id + " AAAAAAAAAAAAAA vvv");
 
       const userQuery = `SELECT * FROM tasks WHERE id_tasks =?`;
