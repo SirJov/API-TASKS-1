@@ -55,14 +55,14 @@ class TasksHandler {
 
   async deletarBody(req) {
     try {
-      const [value_task] = req.query.value_task;
-      console.log(value_task + " AAAAAAAAAAAAAA vvv");
-      const userQuery = `SELECT * FROM tasks WHERE value_task =?`;
-      const user = await taskModel(userQuery, value_task);
+      const id_tasks = req.query.id_tasks;
+      console.log(id_tasks + " AAAAAAAAAAAAAA vvv");
+      const userQuery = `SELECT * FROM tasks WHERE id_tasks =?`;
+      const user = await taskModel(userQuery, id_tasks);
       if (user.length == 0) throw new Error("Esta tarefa nao existe");
 
       const query = "DELETE FROM tasks WHERE value_task =?";
-      await taskModel(query, value_task);
+      await taskModel(query, id_tasks);
       return { mensagem: "Tarefa deletada com sucesso!!!" };
     } catch (error) {
       return { message: error.message, code: 500 };
