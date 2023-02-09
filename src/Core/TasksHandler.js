@@ -80,7 +80,6 @@ class TasksHandler {
       //destruindo a json retornada da tarefa especifica e obtendo o status em 'string'
       const [a] = user;
       const { state_task } = a;
-      console.log(state_task);
 
       function estadoCorreto(a) {
         if (a === "PENDENTE") {
@@ -100,7 +99,7 @@ class TasksHandler {
       const params_2 = [estados, id];
       const query = "UPDATE tasks SET state_task = ? WHERE id_tasks =?";
       await taskModel(query, params_2);
-      return { mensagem: "Estado atualizado com sucesso!!!" };
+      return [{ mensagem: "Estado atualizado com sucesso!!!" }, user[0]];
     } catch (error) {
       return { message: error.message, code: 500 };
     }
