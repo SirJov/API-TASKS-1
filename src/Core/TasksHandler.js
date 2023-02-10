@@ -99,7 +99,7 @@ class TasksHandler {
       const params_2 = [estados, id];
       const query = "UPDATE tasks SET state_task = ? WHERE id_tasks =?";
       await taskModel(query, params_2);
-      return [{ mensagem: "Estado atualizado com sucesso!!!" }, user[0]];
+      return [{ mensagem: "Estado atualizado com sucesso!!!" }, user];
     } catch (error) {
       return { message: error.message, code: 500 };
     }
