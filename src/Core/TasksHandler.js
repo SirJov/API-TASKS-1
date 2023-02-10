@@ -56,7 +56,6 @@ class TasksHandler {
   async deletarBody(req) {
     try {
       const id = req.query["id_tasks"];
-      console.log(id + " AAAAAAAAAAAAAA vvv");
 
       const userQuery = `SELECT * FROM tasks WHERE id_tasks =?`;
       const user = await taskModel(userQuery, id);
@@ -99,7 +98,7 @@ class TasksHandler {
       const params_2 = [estados, id];
       const query = "UPDATE tasks SET state_task = ? WHERE id_tasks =?";
       await taskModel(query, params_2);
-      return [{ mensagem: "Estado atualizado com sucesso!!!" }, user];
+      return [{ mensagem: "Estado atualizado com sucesso!!!" }, user[0]];
     } catch (error) {
       return { message: error.message, code: 500 };
     }
