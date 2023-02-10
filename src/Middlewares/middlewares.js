@@ -1,13 +1,7 @@
 const validateBody = (req, res, next) => {
   const taskBody = req.body;
   const task = taskBody.value_task;
-  console.log("Valor e tipo do body");
-  console.log(req.body);
-  console.log(task);
-  console.log(typeof task);
   const a = task.replace(/\s/g, "");
-
-  console.log(a + " " + typeof task + " AAAAAAAAAAAAAA");
 
   if (task === undefined) {
     return res.status(404).json({ mensage: "campo tarefa obrigatorio!!" });
