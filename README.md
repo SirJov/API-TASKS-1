@@ -29,4 +29,4 @@
 
 <br>
 
-<p align="center">link do FRONT que consome essa API na vercel em React >>>>> https://front-tasks-1-new.vercel.app/ <br> ou em html / css / javascrypt </p>
+<p align="center">link do FRONT que consome essa API na vercel em React >>>>> https://front-tasks-1-new.vercel.app/ <br> ou em html / css / javascrypt >>>>> https://front-task-1.vercel.app/ </p>
