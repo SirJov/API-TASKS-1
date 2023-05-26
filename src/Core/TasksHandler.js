@@ -31,6 +31,7 @@ class TasksHandler {
     } catch (error) {
       return {
         message: "falha ao buscar usuarios no banco de dados",
+
         code: 500,
       };
     }
